@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/Admin.css'
 import { useNavigate } from 'react-router-dom'
-// import API from 'API'
 import API from '../utils/api'; // adjust the path accordingly
 
 const Admin = () => {
