@@ -8,7 +8,8 @@ import { fileURLToPath } from 'url';
 import path from 'path'; // ✅ REQUIRED
 import { User, Booking, Flight } from './schemas.js';
 
-dotenv.config();
+dotenv.config({ path: './.env' });
+
 const app = express();
 
 app.use(express.json());
