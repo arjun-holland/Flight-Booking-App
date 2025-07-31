@@ -42,7 +42,7 @@ const Admin = () => {
   const approveRequest = async (id) =>{
       try{
 
-          await API.post('/approve-operator', {id}).then(
+          await API.post('https://flight-booking-app-9uum.onrender.com/approve-operator', { id }).then(
             (response)=>{
               alert("Operator approved!!");
               fetchData();
