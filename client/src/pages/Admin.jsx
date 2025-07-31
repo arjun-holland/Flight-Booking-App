@@ -18,19 +18,19 @@ const Admin = () => {
   }, [])
 
   const fetchData = async () =>{
-    await API.get('/fetch-users').then(
+    await API.get('https://flight-booking-app-9uum.onrender.com/fetch-users').then(
       (response)=>{
         
         setUserCount(response.data.length -1);
         setUsers(response.data.filter(user => user.approval === 'not-approved'));
       }
     );
-    await API.get('/fetch-bookings').then(
+    await API.get('https://flight-booking-app-9uum.onrender.com/fetch-bookings').then(
       (response)=>{
         setbookingCount(response.data.length);
       }
     );
-    await API.get('/fetch-flights').then(
+    await API.get('https://flight-booking-app-9uum.onrender.com/fetch-flights').then(
       (response)=>{
         setFlightsCount(response.data.length);
       }
@@ -57,7 +57,7 @@ const Admin = () => {
   const rejectRequest = async (id) =>{
     try{
 
-      await API.post('/reject-operator', {id}).then(
+      await API.post('https://flight-booking-app-9uum.onrender.com/reject-operator', {id}).then(
         (response)=>{
           alert("Operator rejected!!");
           fetchData();
