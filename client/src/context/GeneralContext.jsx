@@ -21,7 +21,7 @@ const GeneralContextProvider = ({children}) => {
   const login = async () =>{
     try{
       const loginInputs = {email, password}
-        await axios.post('https://flight-booking-app-9uum.onrender.com/login', loginInputs)
+        await axios.post('/login', loginInputs)
         .then( async (res)=>{
 
             localStorage.setItem('userId', res.data._id);
@@ -48,7 +48,7 @@ const GeneralContextProvider = ({children}) => {
   
   const register = async () =>{
     try{
-        await axios.post('https://flight-booking-app-9uum.onrender.com/register', inputs)
+        await axios.post('/register', inputs)
         .then( async (res)=>{
             localStorage.setItem('userId', res.data._id);
             localStorage.setItem('userType', res.data.usertype);
