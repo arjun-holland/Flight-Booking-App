@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors({
-  origin: 'https://flight-booking-app-lovat.vercel.app', // 🔁 replace with actual Vercel frontend URL
+  origin: 'https://flight-booking-app-omega.vercel.app/', // 🔁 replace with actual Vercel frontend URL
  // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
