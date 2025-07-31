@@ -25,12 +25,12 @@ const Admin = () => {
         setUsers(response.data.filter(user => user.approval === 'not-approved'));
       }
     );
-    await API.get('http://localhost:6001/fetch-bookings').then(
+    await API.get('/fetch-bookings').then(
       (response)=>{
         setbookingCount(response.data.length);
       }
     );
-    await API.get('http://localhost:6001/fetch-flights').then(
+    await API.get('/fetch-flights').then(
       (response)=>{
         setFlightsCount(response.data.length);
       }
@@ -42,7 +42,7 @@ const Admin = () => {
   const approveRequest = async (id) =>{
       try{
 
-          await API.post('http://localhost:6001/approve-operator', {id}).then(
+          await API.post('/approve-operator', {id}).then(
             (response)=>{
               alert("Operator approved!!");
               fetchData();
@@ -57,7 +57,7 @@ const Admin = () => {
   const rejectRequest = async (id) =>{
     try{
 
-      await API.post('http://localhost:6001/reject-operator', {id}).then(
+      await API.post('/reject-operator', {id}).then(
         (response)=>{
           alert("Operator rejected!!");
           fetchData();
