@@ -19,59 +19,53 @@ const GeneralContextProvider = ({children}) => {
 
   const navigate = useNavigate();
 
-  const login = async () =>{
-    try{
-      const loginInputs = {email, password}
-        await API.post('/login', loginInputs);
-        .then( async (res)=>{
+ const login = async () => {
+  try {
+    const loginInputs = { email, password };
+    const res = await API.post('/login', loginInputs);
 
-            localStorage.setItem('userId', res.data._id);
-            localStorage.setItem('userType', res.data.usertype);
-            localStorage.setItem('username', res.data.username);
-            localStorage.setItem('email', res.data.email);
+    localStorage.setItem('userId', res.data._id);
+    localStorage.setItem('userType', res.data.usertype);
+    localStorage.setItem('username', res.data.username);
+    localStorage.setItem('email', res.data.email);
 
-            if(res.data.usertype === 'customer'){
-                navigate('/');
-            } else if(res.data.usertype === 'admin'){
-                navigate('/admin');
-            } else if(res.data.usertype === 'flight-operator'){
-              navigate('/flight-admin');
-            }
-        }).catch((err) =>{
-            alert("login failed!!");
-            console.log(err);
-        });
-
-    }catch(err){
-        console.log(err);
+    if (res.data.usertype === 'customer') {
+      navigate('/');
+    } else if (res.data.usertype === 'admin') {
+      navigate('/admin');
+    } else if (res.data.usertype === 'flight-operator') {
+      navigate('/flight-admin');
     }
+
+  } catch (err) {
+    alert("Login failed!");
+    console.log(err);
   }
-  
-  const register = async () =>{
-    try{
-        await API.post('/register', inputs);
-        .then( async (res)=>{
-            localStorage.setItem('userId', res.data._id);
-            localStorage.setItem('userType', res.data.usertype);
-            localStorage.setItem('username', res.data.username);
-            localStorage.setItem('email', res.data.email);
+};
 
-            if(res.data.usertype === 'customer'){
-                navigate('/');
-            } else if(res.data.usertype === 'admin'){
-                navigate('/admin');
-            } else if(res.data.usertype === 'flight-operator'){
-              navigate('/flight-admin');
-            }
+  const register = async () => {
+  try {
+    const res = await API.post('/register', inputs);
 
-        }).catch((err) =>{
-            alert("registration failed!!");
-            console.log(err);
-        });
-    }catch(err){
-        console.log(err);
+    localStorage.setItem('userId', res.data._id);
+    localStorage.setItem('userType', res.data.usertype);
+    localStorage.setItem('username', res.data.username);
+    localStorage.setItem('email', res.data.email);
+
+    if (res.data.usertype === 'customer') {
+      navigate('/');
+    } else if (res.data.usertype === 'admin') {
+      navigate('/admin');
+    } else if (res.data.usertype === 'flight-operator') {
+      navigate('/flight-admin');
     }
+
+  } catch (err) {
+    alert("Registration failed!");
+    console.log(err);
   }
+};
+
 
 
 
